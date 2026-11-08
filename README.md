@@ -63,6 +63,66 @@ The app loads saved trained pipelines and does not retrain models on uploaded te
 
 **Live Streamlit application:** [https://bitsmlassignment2-qtrwvenvftfpmnd3k8ukcw.streamlit.app/](https://bitsmlassignment2-qtrwvenvftfpmnd3k8ukcw.streamlit.app/)
 
+
+## How to Use the Streamlit Application
+
+**Live application:** [Bank Marketing Classification – Streamlit App](https://bitsmlassignment2-qtrwvenvftfpmnd3k8ukcw.streamlit.app/)
+
+### 1. Open the application
+
+Open the live Streamlit link above. The application opens on the **Overview** tab. The sidebar displays the five available trained models and confirms that the saved models have loaded successfully.
+
+### 2. Go to the Prediction tab
+
+Select the **Prediction** tab. The *Customer Subscription Prediction* page provides two controls:
+
+- **Select Classification Model:** Use the dropdown to choose one of the five classifiers:
+  Logistic Regression, Decision Tree, KNN, Naive Bayes, or SVM.
+- **Upload Customer CSV Dataset:** Use the **Upload** control to select a CSV file from your computer.
+
+The screenshot below shows the Prediction tab, the model-selection dropdown, and the CSV upload control.
+
+![Streamlit Prediction tab showing model selection and CSV upload](streamlit_prediction_tab.png)
+
+### 3. Prepare and upload the CSV file
+
+The uploaded CSV must contain the 15 input feature columns used by the trained models, with the expected column names:
+
+`age`, `job`, `marital`, `education`, `default`, `balance`, `housing`, `loan`, `contact`, `day`, `month`, `campaign`, `pdays`, `previous`, `poutcome`.
+
+- For **prediction only**, provide these 15 feature columns.
+- To **evaluate predictions against known outcomes**, also include the target column `y`, containing `yes` or `no`.
+- The repository includes `test_data.csv`, which can be used as a sample evaluation file.
+
+### 4. View prediction results
+
+After uploading a valid CSV, the application uses the selected saved model to generate predictions for the uploaded customer records. Review the prediction output provided by the app. Where available, use the download option to save the prediction results.
+
+### 5. Evaluate the selected model
+
+If the uploaded CSV includes the actual target column `y`, open the **Evaluation** tab. The app displays the evaluation results for the selected model, including:
+
+- Accuracy
+- AUC
+- Precision
+- Recall
+- F1 Score
+- Matthews Correlation Coefficient (MCC)
+- Confusion matrix
+- Classification report
+
+If the target column `y` is not included, the app can provide predictions but cannot calculate supervised evaluation metrics against actual labels.
+
+### 6. Compare all five models
+
+Open the **Model Comparison** tab to review the comparison table and chart for the five trained classifiers. This view helps compare their performance across the evaluation metrics.
+
+### Important notes
+
+- The application loads the five previously trained model pipelines from the `models/` directory.
+- Uploaded CSV data is used for prediction and, when `y` is present, evaluation. The app does **not** retrain the saved models on uploaded data.
+- Use the expected feature names and provide valid values in the columns. Do not include `duration` as an input feature; it was excluded from model training.
+
 ## Project Structure
 
 ```text
